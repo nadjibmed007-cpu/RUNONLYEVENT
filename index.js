@@ -10,6 +10,24 @@ const client = new Client({
     ],
     partials: [Partials.Channel]
 });
+client.on('messageCreate', async (message) => {
+    // Commande !stats
+    if (message.content === '!stats' && !message.author.bot) {
+        const gagnants = JSON.parse(fs.readFileSync('./gagnants.json', 'utf-8'));
+        const codesUtilises = gagnants.length;
+        const codesRestants = codesTickets.length;
+        const total = codesUtilises + codesRestants;
+
+        await message.channel.send(
+📊 **STATISTIQUES DES CODES**
+━━━━━━━━━━━━━━━━━━━━━
+✅ Codes utilisés : **${codesUtilises}**
+🎫 Codes restants : **${codesRestants}**
+📦 Total des codes : **${total}**
+━━━━━━━━━━━━━━━━━━━━━
+        );
+    }
+});
 
 // --- CONFIGURATION À MODIFIER ---
 const TOKEN = process.env.TOKEN;
