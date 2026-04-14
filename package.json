@@ -2,9 +2,10 @@
   "name": "runonlybot",
   "version": "1.0.0",
   "description": "",
-  "main": "Runonlybot.js",
-  "scripts": {
-    "start": "node Runonlybot.js"
+"main": "index.js",
+"scripts": {
+    "start": "node index.js"
+},
   },
   "keywords": [],
   "author": "",
